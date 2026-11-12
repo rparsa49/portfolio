@@ -1,790 +1,304 @@
-
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Roya Parsa — ML researcher and AI engineer working on foundation models, medical imaging, and reliable AI systems.">
-  <title>Roya Parsa · ML Research & Engineering</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #faf7f4;
-      --ink: #292332;
-      --muted: #746b76;
-      --accent: #a33b63;
-      --line: #e7dfe0;
-      --panel: #fffdfb;
-      --violet: #67518b;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font: 16px/1.65 'DM Sans', sans-serif;
-    }
-
-    a { color: inherit; }
-    a:hover { color: var(--accent); }
-
-    .wrap {
-      max-width: 1100px;
-      margin: auto;
-      padding: 0 28px;
-    }
-
-    .mono, .eyebrow, .tag, .year, nav, .footer {
-      font-family: 'DM Mono', monospace;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      font-size: 12px;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-    }
-
-    /* Navigation */
-
-    .top {
-      border-bottom: 1px solid var(--line);
-      position: sticky;
-      top: 0;
-      background: #faf7f4ed;
-      backdrop-filter: blur(12px);
-      z-index: 5;
-    }
-
-    .top .wrap {
-      height: 66px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font: 600 22px Fraunces, serif;
-      text-decoration: none;
-    }
-
-    nav {
-      display: flex;
-      gap: 25px;
-      font-size: 12px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--muted);
-    }
-
-    /* Hero */
-
-    .hero {
-      padding: 94px 0 100px;
-      display: grid;
-      grid-template-columns: 1.12fr .88fr;
-      gap: 72px;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font: 600 clamp(55px, 7.5vw, 94px)/1.02 Fraunces, serif;
-      letter-spacing: -.05em;
-      margin: 15px 0 22px;
-    }
-
-    .hero h1 em {
-      color: var(--accent);
-      font-weight: 400;
-    }
-
-    .lead {
-      font: 400 clamp(22px, 2.7vw, 31px)/1.35 Fraunces, serif;
-      max-width: 550px;
-      margin: 0 0 22px;
-    }
-
-    .intro {
-      max-width: 570px;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .links {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-top: 30px;
-      font-size: 14px;
-    }
-
-    .primary {
-      background: var(--ink);
-      color: white;
-      padding: 11px 21px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .primary:hover {
-      background: var(--accent);
-      color: white;
-    }
-
-    .links a:not(.primary) {
-      text-underline-offset: 5px;
-    }
-
-    /* Photo terminal */
-
-    .terminal {
-      background: #2d2634;
-      color: #e8dce8;
-      border-radius: 10px;
-      box-shadow: 0 24px 55px #48304425;
-      overflow: hidden;
-      transform: rotate(1deg);
-    }
-
-    .terminal-head {
-      border-bottom: 1px solid #ffffff22;
-      padding: 12px 17px;
-      display: flex;
-      gap: 7px;
-      align-items: center;
-      font: 11px 'DM Mono', monospace;
-      color: #c3b3c5;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #d88c9e;
-    }
-
-    .dot:nth-child(2) { background: #d4b17c; }
-    .dot:nth-child(3) { background: #a6ba9c; }
-    .terminal-head span:last-child { margin-left: auto; }
-
-    .terminal-photo {
-      padding: 12px 12px 0;
-    }
-
-    .terminal-photo img {
-      display: block;
-      width: 100%;
-      height: 370px;
-      object-fit: cover;
-      object-position: center 43%;
-      border-radius: 4px;
-    }
-
-    .terminal-caption {
-      padding: 14px 18px 18px;
-      font: 11px/1.7 'DM Mono', monospace;
-      color: #e9e1eb;
-    }
-
-    .terminal-caption > span:first-child {
-      color: #e6a6be;
-    }
-
-    .terminal-caption-answer {
-      display: block;
-      color: #c3b3c5;
-      margin-top: 3px;
-    }
-
-    /* Sections */
-
-    .section {
-      padding: 76px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .section h2 {
-      font: 600 clamp(31px, 4vw, 44px)/1.15 Fraunces, serif;
-      letter-spacing: -.025em;
-      margin: 8px 0 32px;
-    }
-
-    .section-intro {
-      color: var(--muted);
-      max-width: 650px;
-      margin: -14px 0 30px;
-    }
-
-    /* Project cards */
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .project {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      padding: 27px;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      min-height: 245px;
-      transition: transform .2s, border-color .2s;
-    }
-
-    .project:hover {
-      transform: translateY(-3px);
-      border-color: #d4b5c2;
-    }
-
-    .project h3 {
-      font: 600 24px/1.2 Fraunces, serif;
-      margin: 12px 0;
-    }
-
-    .project p {
-      color: var(--muted);
-      margin: 0 0 18px;
-      font-size: 14px;
-    }
-
-    .tags {
-      display: flex;
-      gap: 7px;
-      flex-wrap: wrap;
-      margin-top: auto;
-    }
-
-    .tag {
-      font-size: 10px;
-      padding: 4px 8px;
-      background: #f5edf1;
-      color: #82516b;
-      border-radius: 3px;
-    }
-
-    .project .bottom {
-      margin-top: 18px;
-      font-size: 13px;
-    }
-
-    .project .bottom a {
-      color: var(--accent);
-      text-underline-offset: 4px;
-    }
-
-    /* Experience */
-
-    .experience { display: grid; }
-
-    .role {
-      display: grid;
-      grid-template-columns: 165px 1fr;
-      gap: 24px;
-      padding: 23px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .year {
-      font-size: 12px;
-      color: var(--accent);
-      padding-top: 5px;
-    }
-
-    .role h3 {
-      margin: 0;
-      font-size: 17px;
-    }
-
-    .role .org {
-      font-size: 14px;
-      color: var(--violet);
-    }
-
-    .role p {
-      color: var(--muted);
-      font-size: 14px;
-      margin: 8px 0 0;
-      max-width: 700px;
-    }
-
-    /* About */
-
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-    }
-
-    .about p {
-      color: var(--muted);
-      margin: 0 0 16px;
-    }
-
-    .about .aside {
-      font: 400 25px/1.4 Fraunces, serif;
-      color: var(--ink);
-    }
-
-    /* Contact and footer */
-
-    .contact { padding-bottom: 90px; }
-    .contact h2 { font-size: clamp(38px, 6vw, 64px); }
-    .contact p { color: var(--muted); }
-
-    .footer {
-      border-top: 1px solid var(--line);
-      padding: 24px 0 38px;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .footer .wrap {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    /* Responsive */
-
-    @media (max-width: 800px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 58px 0;
-        gap: 45px;
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#111411" />
+    <title>Roya Parsa — Terminal</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #111411;
+        --fg: #d9e1d7;
+        --muted: #829083;
+        --accent: #a8cba0;
       }
-
-      .terminal {
-        max-width: 450px;
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          14px/1.75 ui-monospace,
+          SFMono-Regular,
+          Menlo,
+          Consolas,
+          monospace;
+      }
+      main {
+        max-width: 790px;
+        margin: 0 auto;
+        padding: clamp(36px, 9vh, 100px) 24px 100px;
+      }
+      h1 {
+        font-size: 16px;
+        font-weight: 500;
+        margin: 0 0 10px;
+      }
+      p {
+        margin: 0 0 12px;
+      }
+      a {
+        color: var(--accent);
+        text-underline-offset: 3px;
+      }
+      a:hover {
+        color: #e1f4d9;
+      }
+      .muted,
+      small {
+        color: var(--muted);
+      }
+      .welcome {
+        margin-bottom: 32px;
+      }
+      .welcome p {
+        color: var(--muted);
+      }
+      .prompt {
+        color: var(--accent);
+        white-space: nowrap;
+      }
+      .line,
+      .input-line {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+      }
+      .input-line {
+        margin-top: 8px;
+      }
+      .input-line input {
         width: 100%;
-        margin: auto;
+        min-width: 0;
+        border: 0;
+        outline: 0;
+        background: none;
+        color: var(--fg);
+        font: inherit;
+        caret-color: var(--accent);
+        padding: 0;
       }
-
-      .about {
-        grid-template-columns: 1fr;
-        gap: 20px;
+      .entry {
+        margin: 0 0 28px;
       }
-    }
-
-    @media (max-width: 600px) {
-      nav { gap: 13px; font-size: 10px; }
-      .wrap { padding: 0 20px; }
-      .grid { grid-template-columns: 1fr; }
-      .role { grid-template-columns: 1fr; gap: 3px; }
-      .section { padding: 56px 0; }
-      .hero h1 { font-size: 61px; }
-      .terminal-photo img { height: 340px; }
-      .footer .wrap { flex-direction: column; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .project { transition: none; }
-    }
-  </style>
-</head>
-
-<body>
-  <header class="top">
-    <div class="wrap">
-      <a href="#home" class="logo">rwp.</a>
-      <nav>
-        <a href="#work">work</a>
-        <a href="#experience">experience</a>
-        <a href="#about">about</a>
-        <a href="#contact">contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <div class="wrap">
-      <section class="hero" id="home">
-        <div>
-          <div class="eyebrow">
-            ML researcher / AI engineer · Dartmouth
-          </div>
-
-          <h1>Hi, I'm <em>Roya.</em></h1>
-
-          <p class="lead">
-            I build models that learn from complex data and
-            the systems that make them useful.
-          </p>
-
-          <p class="intro">
-            I'm a computer science master's student and researcher
-            in Dartmouth's Hassanpour Lab. My work spans
-            <strong>
-              foundation model adaptation, computational pathology,
-              medical computer vision, and robust ML evaluation.
-            </strong>
-            I like research that survives contact with the real world.
-          </p>
-
-          <div class="links">
-            <a class="primary" href="mailto:royaparsa294@gmail.com">
-              Get in touch ↗
-            </a>
-            <a href="https://github.com/rparsa49"
-               target="_blank" rel="noopener">
-              GitHub ↗
-            </a>
-            <a href="https://www.linkedin.com/in/roya-parsa/"
-               target="_blank" rel="noopener">
-              LinkedIn ↗
-            </a>
-            <a href="Roya_Parsa_Resume.pdf"
-               target="_blank" rel="noopener">
-              Résumé ↗
-            </a>
-          </div>
-        </div>
-
-        <!-- Original photo inside terminal card -->
-        <div class="terminal" aria-label="Roya Parsa portrait">
-          <div class="terminal-head">
-            <i class="dot"></i>
-            <i class="dot"></i>
-            <i class="dot"></i>
-            <span> ~</span>
-          </div>
-
-          <div class="terminal-photo">
-            <img
-              src="me.jpg"
-              alt="Portrait of Roya Parsa"
-              loading="eager"
-            >
-          </div>
-
-          <div class="terminal-caption">
-            <span>$</span> whoami
-            <span class="terminal-caption-answer">
-              roya parsa · researcher &amp; engineer
-            </span>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <section class="section" id="work">
-      <div class="wrap">
-        <div class="eyebrow">01 / selected projects</div>
-        <h2>Things I'm building & studying.</h2>
-
-        <p class="section-intro">
-          From gigapixel pathology slides to production-minded AI tooling.
-          A few projects at the intersection of research and engineering.
-        </p>
-
-        <div class="grid">
-
-          <article class="project">
-            <div class="eyebrow">
-              Computational pathology · ongoing research
-            </div>
-
-            <h3>Learning from whole-slide images</h3>
-
-            <p>
-              Adapting Prov-GigaPath representations for liver disease
-              classification, including attention-based multiple instance
-              learning, multimodal fusion, and LoRA fine-tuning experiments.
-            </p>
-
-            <div class="tags">
-              <span class="tag">PyTorch</span>
-              <span class="tag">Prov-GigaPath</span>
-              <span class="tag">LoRA</span>
-              <span class="tag">MIL</span>
-            </div>
-
-            <div class="bottom">Manuscript in preparation</div>
-          </article>
-
-          <article class="project">
-            <div class="eyebrow">Agents · Personal Assistant</div>
-
-            <h3>Bitty: Desktop Assistant</h3>
-
-            <p>
-              Most agents are a text box. Bitty is an agent you can see working: the creature reacts to what the agent is actually doing (thinking, running a tool, asking permission, failing) instead of just showing a chat log.
-            </p>
-
-            <div class="tags">
-              <span class="tag">LLM-Agents</span>
-              <span class="tag">Tool Use</span>
-              <span class="tag">Anthropic</span>
-            </div>
-
-            <div class="bottom">
-              <a href="https://github.com/rparsa49/bitty"
-                 target="_blank" rel="noopener">
-                Explore repository ↗
-              </a>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="eyebrow">Medical imaging · applied ML</div>
-
-            <h3>SPR-NET: CT to proton stopping power</h3>
-
-            <p>
-              Developed deep-learning approaches to reconstruct
-              stopping-power ratio maps from dual-energy CT,
-              evaluated against Gammex-provided reference maps
-              using SPR percentage deviation.
-            </p>
-
-            <div class="tags">
-              <span class="tag">U-Net</span>
-              <span class="tag">Medical imaging</span>
-              <span class="tag">Model evaluation</span>
-            </div>
-
-            <div class="bottom">
-              <a href="https://github.com/rparsa49/NYPC-DCT"
-                 target="_blank" rel="noopener">
-                Explore repository ↗
-              </a>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="eyebrow">Model evaluation · research</div>
-
-            <h3>Do fairness interventions generalize?</h3>
-
-            <p>
-              Investigating whether shortcut-mitigation methods retain
-              their effectiveness across dermatology datasets and
-              skin-tone subgroups, rather than only on their original
-              benchmarks.
-            </p>
-
-            <div class="tags">
-              <span class="tag">Fairness</span>
-              <span class="tag">Robustness</span>
-              <span class="tag">Benchmarking</span>
-            </div>
-
-            <div class="bottom">
-              <a href="https://github.com/rparsa49/fst-poc"
-                 target="_blank" rel="noopener">
-                Explore repository ↗
-              </a>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="eyebrow">
-              Master's thesis · model reliability
-            </div>
-
-            <h3>When medical AI meets distribution shift</h3>
-
-            <p>
-              Investigating reliability of medical foundation models
-              as data changes across time, imaging modalities, and
-              rare-disease cohorts. My thesis studies temporal drift,
-              synthetic-data feedback loops, subgroup failure modes,
-              and mitigation through calibration and lightweight adaptation.
-            </p>
-
-            <div class="tags">
-              <span class="tag">Distribution shift</span>
-              <span class="tag">Temporal drift</span>
-              <span class="tag">Rare diseases</span>
-              <span class="tag">Model calibration</span>
-            </div>
-
-            <div class="bottom">
-              Master's thesis · ongoing · <a href="https://github.com/rparsa49/medgemma-ct-robustness"
-                 target="_blank" rel="noopener">
-                Sneak peek here... ↗
-              </a>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="eyebrow">AI engineering · open source</div>
-
-            <h3>simpleCoder</h3>
-
-            <p>
-              A terminal-based coding agent exploring
-              retrieval-augmented context, tool use,
-              and file-permission guardrails.
-            </p>
-
-            <div class="tags">
-              <span class="tag">Agents</span>
-              <span class="tag">RAG</span>
-              <span class="tag">Python</span>
-            </div>
-
-            <div class="bottom">
-              <a href="https://github.com/rparsa49/simplecoder"
-                 target="_blank" rel="noopener">
-                Explore repository ↗
-              </a>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="experience">
-      <div class="wrap">
-        <div class="eyebrow">02 / experience</div>
-        <h2>Research meets engineering.</h2>
-
-        <div class="experience">
-
-          <article class="role">
-            <div class="year">2025 — now</div>
-            <div>
-              <h3>Graduate Research Assistant</h3>
-              <div class="org">
-                Hassanpour Lab · Dartmouth / Geisel School of Medicine
-              </div>
-              <p>
-                Computational pathology, medical foundation models,
-                and computer vision for clinical imaging.
-              </p>
-            </div>
-          </article>
-
-          <article class="role">
-            <div class="year">2026</div>
-            <div>
-              <h3>AI Research Fellow</h3>
-              <div class="org">
-                Imageomics Institute · The Ohio State University
-              </div>
-              <p>
-                Interdisciplinary imageomics research and field-based
-                applications of computer vision.
-              </p>
-            </div>
-          </article>
-
-          <article class="role">
-            <div class="year">2024 — 2025</div>
-            <div>
-              <h3>Student Researcher</h3>
-              <div class="org">New York Proton Center</div>
-              <p>
-                Machine learning for dual-energy CT and
-                proton therapy stopping-power estimation.
-              </p>
-            </div>
-          </article>
-
-          <article class="role">
-            <div class="year">2023 — 2024</div>
-            <div>
-              <h3>Software Engineer Intern</h3>
-              <div class="org">North Atlantic Industries</div>
-              <p>
-                Embedded Linux and VxWorks systems, developer tools,
-                networking, and software automation.
-              </p>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="wrap">
-        <div class="eyebrow">03 / beyond the code</div>
-        <h2>A little more human.</h2>
-
-        <div class="about">
-          <p class="aside">
-            I care about the gap between a promising model
-            and a system people can actually trust.
-          </p>
-
-          <div>
-            <p>
-              My favorite problems combine messy data, careful
-              experiments, and engineering constraints.
-              I enjoy moving between reading papers, training models,
-              and figuring out why a pipeline broke at 2 a.m.
-            </p>
-
-            <p>
-              Outside of research, I ride horses, enjoy a good story,
-              and tend to collect more side-project ideas than my
-              calendar can reasonably support.
-            </p>
-
-            <p class="mono"
-               style="font-size:12px;color:var(--accent)">
-              currently: learning, building, debugging, repeating ↗
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact" id="contact">
-      <div class="wrap">
-        <div class="eyebrow">04 / say hello</div>
-
-        <h2>Let's build something meaningful.</h2>
-
+      .result {
+        padding: 10px 0 0 0;
+      }
+      .result h2 {
+        font-size: 14px;
+        font-weight: 500;
+        margin: 0 0 10px;
+        color: var(--accent);
+      }
+      .result .item {
+        margin: 0 0 16px;
+      }
+      .result .item strong {
+        font-weight: 500;
+      }
+      .result .item small {
+        display: block;
+      }
+      .result .item p {
+        margin: 3px 0;
+      }
+      .result .section {
+        margin-bottom: 16px;
+      }
+      .pill {
+        display: inline-block;
+        margin: 0 14px 5px 0;
+        color: var(--fg);
+      }
+      .error {
+        color: #e6a6a6;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      ::selection {
+        background: #536f52;
+        color: white;
+      }
+      @media (max-width: 500px) {
+        main {
+          padding: 40px 18px 80px;
+        }
+        body {
+          font-size: 12px;
+        }
+        .line,
+        .input-line {
+          gap: 8px;
+        }
+        .result h2 {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main id="terminal">
+      <div class="welcome" id="welcome">
+        <h1>Roya Parsa</h1>
+        <p>ML researcher &amp; AI engineer.<br />Dartmouth College.</p>
         <p>
-          Open to conversations about ML research,
-          AI engineering, and interesting collaborations.
+          Commands:
+          <span style="color: var(--fg)"
+            >about · research · stack · contact · resume</span
+          ><br />Type <span style="color: var(--accent)">help</span> for more.
         </p>
-
-        <div class="links">
-          <a class="primary"
-             href="mailto:royaparsa294@gmail.com">
-            royaparsa294@gmail.com ↗
-          </a>
-
-          <a href="https://github.com/rparsa49"
-             target="_blank" rel="noopener">
-            GitHub
-          </a>
-
-          <a href="https://www.linkedin.com/in/roya-parsa/"
-             target="_blank" rel="noopener">
-            LinkedIn
-          </a>
-        </div>
       </div>
-    </section>
-  </main>
+      <div id="history" aria-live="polite"></div>
+      <form id="form" autocomplete="off">
+        <label class="sr-only" for="command">Terminal command</label>
+        <div class="input-line">
+          <span class="prompt">~ $</span
+          ><input
+            id="command"
+            autofocus
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+            aria-label="Type a command"
+          />
+        </div>
+      </form>
+    </main>
+    <script>
+      (() => {
+        "use strict";
+        const input = document.getElementById("command"),
+          form = document.getElementById("form"),
+          historyEl = document.getElementById("history"),
+          welcome = document.getElementById("welcome");
+        const commands = [
+          "about",
+          "research",
+          "stack",
+          "contact",
+          "resume",
+          "help",
+          "clear",
+        ];
+        let past = [],
+          cursor = 0;
+        const content = {
+          help: `<h2>Available commands</h2><div class="section"><p><strong>about</strong> &nbsp;&nbsp; — who I am and what drives me<br><strong>research</strong> — selected research and engineering work<br><strong>stack</strong> &nbsp;&nbsp; — languages, tools, and methods<br><strong>contact</strong> &nbsp; — find me elsewhere<br><strong>resume</strong> &nbsp; — download my résumé<br><strong>clear</strong> &nbsp;&nbsp; — clear terminal output<br><strong>help</strong> &nbsp;&nbsp;&nbsp; — show this list</p><p class="muted">Tip: use ↑ / ↓ to recall commands, or Tab to autocomplete.</p></div>`,
+          about: `<h2>About me</h2><p>I'm Roya Parsa, a Computer Science master's student at Dartmouth and a researcher in the Hassanpour Lab. My work sits at the intersection of machine learning research and practical engineering.</p><p>I work on biomedical foundation models, computational pathology, medical imaging, and model reliability. I'm particularly interested in what makes AI systems trustworthy outside carefully controlled benchmarks.</p><p>Previously, I've worked on computer vision for proton therapy, interdisciplinary AI and ecology research, and embedded software engineering.</p><p class="muted">Beyond code: horseback riding, good stories, and a growing collection of side projects.</p>`,
+          research: `<h2>Research</h2><div class="item"><strong>01 / AI for Biodiversity</strong><small>Ohio State University · Imageomics Institute · 2026–2027</small><p>AI Research Fellow conducting imageomics and field research in Hawaiʻi, investigating computational approaches to biodiversity conservation and local flora degradation. Exploring how AI and computer vision can support ecological monitoring and conservation.</p></div>
+  <div class="item">
+    <strong>02 / Robustness of Medical Foundation Models</strong>
+    <small>Hassanpour Lab · Dartmouth · Master's Thesis</small>
+    <p>Investigating how medical foundation models degrade under temporal distribution shift, rare-disease representation, and recursive synthetic-data generation. Designing controlled experiments across five drift scenarios to characterize failure modes, quantify performance degradation, and evaluate mitigation strategies.</p>
+    <a href="https://github.com/rparsa49/medgemma-ct-robustness" target="_blank" rel="noopener noreferrer">Research repository ↗</a>
+  </div>
+  <div class="item">
+    <strong>03 / Computational Pathology & Rare Diseases</strong>
+    <small>Hassanpour Lab · Dartmouth</small>
+    <p>Developing multimodal models combining Prov-GigaPath whole-slide pathology embeddings with clinical serology to classify four liver diseases across 267 slides from 197 patients, achieving 73% held-out accuracy and 0.72 macro-F1. Investigating representation-level failure modes, including AIH-to-PBC (31.5%) and PSC-to-PBC (29.8%) misclassification, and adapting pretrained slide encoders through LoRA. Built reproducible HPC preprocessing pipelines for 1,200+ gigapixel images using SLURM and Apptainer.</p>
+  </div>
+  <div class="item">
+    <strong>04 / Real-Time Ultrasound for Cervical Cancer Screening</strong>
+    <small>Hassanpour Lab · Dartmouth</small>
+    <p>Co-leading development of a real-time YOLOv8-based ultrasound detection system for cervical cancer screening. Optimizing computer vision inference for low-latency operation and deployment in resource-constrained clinical environments.</p>
+  </div><div class="item">
+<strong>05 / Proton Therapy & Dual-Energy CT</strong>
+<small>New York Proton Center · 2024–2025 · ESTRO 2027 Submission</small>
+<p>Developed SPR-NET, a PyTorch U-Net framework for automated proton stopping-power prediction from dual-energy CT, improving performance over analytical methods by 60% in high-density regions. Built clinical CT benchmarking pipelines comparing single- and dual-energy methods, generating stopping-power maps with sub-1% deviation against Gammex reference values.</p>
+<p>Additional research submitted to ESTRO 2027 evaluated TwinBeam dual-energy CT for proton therapy planning, comparing analytical decomposition methods and TissueXplorer against proton measurements and five head-and-neck treatment plans. Identified size-dependent stopping-power errors, elevated noise (8–12% for decomposition methods), and a 4–8% sub-surface SPR deficit. Developed and evaluated size-matching and depth-dependent corrections, reducing mean patient water-equivalent thickness differences to within 0.4% of single-energy CT while improving agreement with phantom measurements.</p><a href="https://github.com/rparsa49/NYPC-DCT" target="_blank" rel="noopener noreferrer">Research repository ↗</a></div>
+`,
 
-  <footer class="footer">
-    <div class="wrap">
-      <span>
-        © 2026 Roya Parsa · made with curiosity & caffeine
-      </span>
-      <span>built by a human (mostly)</span>
-    </div>
-  </footer>
-</body>
+          stack: `<h2>Technical stack</h2><div class="section"><p class="muted">LANGUAGES & DATA</p><span class="pill">Python</span><span class="pill">SQL</span><span class="pill">R</span><span class="pill">C / C++</span></div><div class="section"><p class="muted">MACHINE LEARNING</p><span class="pill">PyTorch</span><span class="pill">Transformers</span><span class="pill">Computer Vision</span><span class="pill">Foundation Models</span><span class="pill">LoRA</span><span class="pill">MIL</span><span class="pill">Calibration</span><span class="pill">Model Evaluation</span></div><div class="section"><p class="muted">ENGINEERING & SYSTEMS</p><span class="pill">LLM Agents</span><span class="pill">Tool Use</span><span class="pill">Git</span><span class="pill">Linux</span><span class="pill">Slurm / HPC</span><span class="pill">Streamlit</span><span class="pill">Vertex AI</span><span class="pill">Embedded Systems</span></div>`,
+          contact: `<h2>Get in touch</h2><p>Interested in collaborating, hiring, or talking about an interesting research problem? I'd love to hear from you.</p><p>Email &nbsp;&nbsp;&nbsp; <a href="mailto:royaparsa294@gmail.com">royaparsa294@gmail.com ↗</a><br>GitHub &nbsp;&nbsp; <a href="https://github.com/rparsa49" target="_blank" rel="noopener noreferrer">github.com/rparsa49 ↗</a><br>LinkedIn &nbsp;<a href="https://www.linkedin.com/in/roya-parsa/" target="_blank" rel="noopener noreferrer">linkedin.com/in/roya-parsa ↗</a></p>`,
+        };
+        function run(raw) {
+          const cmd = raw.trim().toLowerCase();
+          if (!cmd) return;
+          if (cmd === "clear") {
+            historyEl.replaceChildren();
+            welcome.hidden = true;
+            input.value = "";
+            return;
+          }
+          const entry = document.createElement("div");
+          entry.className = "entry";
+          const line = document.createElement("div");
+          line.className = "line";
+          const prompt = document.createElement("span");
+          prompt.className = "prompt";
+          prompt.textContent = "~ $";
+          const word = document.createElement("span");
+          word.textContent = raw;
+          line.append(prompt, word);
+          entry.append(line);
+          const result = document.createElement("div");
+          result.className = "result";
+          if (cmd === "resume") {
+            result.innerHTML =
+              '<p><a href="Roya_Parsa_Resume.pdf" download>Download résumé ↓</a></p>';
+            const a = document.createElement("a");
+            a.href = "Roya_Parsa_Resume.pdf";
+            a.download = "Roya_Parsa_Resume.pdf";
+            document.body.append(a);
+            a.click();
+            a.remove();
+          } else if (Object.hasOwn(content, cmd)) {
+            result.innerHTML = content[cmd];
+          } else {
+            result.innerHTML =
+              '<p class="error"></p><p class="muted">Type help for available commands.</p>';
+            result.querySelector(".error").textContent =
+              "Command not found: " + raw.trim();
+          }
+          entry.append(result);
+          historyEl.append(entry);
+          past.push(raw);
+          cursor = past.length;
+          input.value = "";
+          input.scrollIntoView({ block: "nearest" });
+        }
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          run(input.value);
+        });
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowUp") {
+            e.preventDefault();
+            cursor = Math.max(0, cursor - 1);
+            input.value = past[cursor] || "";
+          } else if (e.key === "ArrowDown") {
+            e.preventDefault();
+            cursor = Math.min(past.length, cursor + 1);
+            input.value = past[cursor] || "";
+          } else if (e.key === "Tab") {
+            const typed = input.value.trim().toLowerCase(),
+              matches = commands.filter((c) => c.startsWith(typed));
+            if (matches.length === 1) {
+              e.preventDefault();
+              input.value = matches[0];
+            }
+          }
+        });
+        document.getElementById("terminal").addEventListener("click", (e) => {
+          if (!e.target.closest("a,input")) input.focus();
+        });
+      })();
+    </script>
+  </body>
 </html>
